@@ -18,6 +18,7 @@ public class NumberWizard : MonoBehaviour
         Debug.Log("The lowest number you can pick is " + min + ".");
         Debug.Log("Is your number higher or lower than " + guess + " ?");
         Debug.Log("Arrow Up = Higher - Arrow Down = Lower - Enter = Correct");
+        max = max + 1;
     }
 
     // Update is called once per frame
@@ -25,15 +26,20 @@ public class NumberWizard : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            Debug.Log("The Up Arrow key was pressed.");
+            min = guess;
+            guess = (max + min) / 2;
+            Debug.Log("Is your number higher or lower than " + guess + " ? ");
+
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            Debug.Log("The Down Arrow key was pressed.");
+            max = guess;
+            guess = (max + min) / 2;
+            Debug.Log("Is your number higher or lower than " + guess + " ? ");
         }
         else if (Input.GetKeyDown(KeyCode.Return))
         {
-            Debug.Log("The Enter key was pressed.");
+            Debug.Log("I guessed the number.");
         }
     }
 }
