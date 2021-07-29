@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class NumberWizard : MonoBehaviour
 {
-
     int max = 1000;
     int min = 1;
     int guess = 500;
 
     // Start is called before the first frame update
     void Start()
+    {
+        StartGame();
+    }
+
+    void StartGame()
     {
         Debug.Log("You're a Number Wizard, Harry !");
         Debug.Log("For my next trick, I'm going to guess a number you chose in your head.");
@@ -27,19 +31,23 @@ public class NumberWizard : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             min = guess;
-            guess = (max + min) / 2;
-            Debug.Log("I see ! Now, is it higher or lower than " + guess + " my lad ? ");
+            NextGuess();
 
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             max = guess;
-            guess = (max + min) / 2;
-            Debug.Log("I see ! Now, is it higher or lower than " + guess + " my lad ? ");
+            NextGuess();
         }
         else if (Input.GetKeyDown(KeyCode.Return))
         {
             Debug.Log("A wizard is never late, nor is he early, he guesses numbers in your head precisely when he means to.");
         }
+    }
+
+    void NextGuess()
+    {
+        guess = (max + min) / 2;
+        Debug.Log("I see ! Now, is it higher or lower than " + guess + " my lad ? ");
     }
 }
